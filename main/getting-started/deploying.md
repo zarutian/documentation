@@ -45,7 +45,7 @@ create new on-chain resources like new currencies or NFTs, create new Purses
 for the application's use, or seed the on-chain contract with initial orders
 or configuration.
 
-The api/deploy.js scripts from teh example contracts can show some of the 
+The api/deploy.js scripts from the example contracts can show some of the 
 range of these custom setup actions:
 * [dapp-encouragement](https://github.com/Agoric/dapp-encouragement/blob/master/api/deploy.js)
 * [dapp-simple-exchange](https://github.com/Agoric/dapp-simple-exchange/blob/master/api/deploy.js)
