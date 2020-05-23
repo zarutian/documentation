@@ -244,7 +244,7 @@ makeEmptyOffer().then(offerHandle => {...})
 
 Create a new offerHook that checks whether the proposal matches the
 `expected` structure before calling the `offerHook` argument
-=======
+
 ## zoeHelpers.escrowAndAllocateTo({ amount, payment, keyword, recipientHandle })
 - `amount` - the amount to be escrowed. This should be equal to the
   payment amount
@@ -272,7 +272,7 @@ return zcf.makeInvitation(
   checkHook(internalOfferHook, expected),
   'firstOffer',
 );
-=======
+
 const { escrowAndAllocateTo } = makeZoeHelpers(zoe);
 
 const offerHook = offerHandle => {
