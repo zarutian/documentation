@@ -163,8 +163,8 @@ Get the offer record. Throws error if the offer is not found.
 const { 
   handle,
   installationHandle,
-  publicAPI,
-  terms
+  proposal,
+  currentAllocation,
 } = await E(zoe).getOffer(offerHandle);
 ```
 
