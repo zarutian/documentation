@@ -7,6 +7,14 @@ functions) are used throughout Zoe.
 
 ## OfferResultRecord
 
+**tyg todo: Appears to be replaced by OfferResult, but can't find an actual definition for it?
+**From test-automatic-refund:**
+```
+The offerResult is simply
+    // the string 'The offer was accepted'
+    const aliceSeat = await zoe.offer(
+```
+
 This is returned in a promise by a call to `offer` on Zoe. It contains 
 promises for handle for querying Zoe about the offer, the payouts 
 when the offer is complete, the result of invoking the contract-specific 
@@ -31,6 +39,20 @@ hook associated with the invitation, and if appropriate for the specified
  
 ## Proposal
 
+```js
+ * @typedef {Partial<ProposalRecord>} Proposal
+ * @typedef {{give: AmountKeywordRecord,
+ *            want: AmountKeywordRecord,
+ *            exit: ExitRule
+ *           }} ProposalRecord
+ 
+  * @typedef {Record<Keyword,Amount>} AmountKeywordRecord
+ *
+ * The keys are keywords, and the values are amounts. For example:
+ * { Asset: amountMath.make(5), Price: amountMath.make(9) }
+ */
+ ```
+
 A Proposal has three parts: `want` and `give` are used
 by Zoe to enforce offer safety; `exit` is used to specify
 the particular payout-liveness policy that Zoe can guarantee.
@@ -47,6 +69,15 @@ as values.
 
 ## IssuerKeywordRecord
 
+```js
+ * @property {IssuerKeywordRecord} issuers - record with
+ * keywords keys, issuer values
+ * @property {BrandKeywordRecord} brands - record with keywords
+ * keys, brand values
+ * @property {AmountMathKeywordRecord} maths - record with keywords
+ * keys, amountMath values
+ ```
+
 The keys are keywords, and the values are issuers. These keywords will
 be used by users to make their proposal. In the below example, "Asset"
 and "Price" are keywords.
@@ -59,6 +90,8 @@ and "Price" are keywords.
 ```
 
 ## PaymentKeywordRecord
+
+**tyg todo: Appears not to be there**
 
 The keys are keywords, and the values are payments
 ```js
@@ -107,6 +140,17 @@ The keys are keywords and the values are the brands for particular issuers.
 
 ## ExitRule
 
+```js
+@typedef {Partial<Waived>&Partial<OnDemand>&Partial<AfterDeadline>} ExitRule
+ * The possible keys are 'waived', 'onDemand', and 'afterDeadline'.
+ * `timer` and `deadline` only are used for the `afterDeadline` key.
+ * The possible records are:
+ * `{ waived: null }`
+ * `{ onDemand: null }`
+ * `{ afterDeadline: { timer :Timer<Deadline>, deadline :Deadline } }
+ */
+ ```
+
 The possible kinds are 'waived', 'onDemand', and 'afterDeadline'. `timer` and `deadline` only are used for the `afterDeadline` kind.
 
 The possible records are:
@@ -132,6 +176,7 @@ The possible records are:
 
 ## OfferStatuses Record
 
+**tyg todo: Missing**
 `active` and `inactive` lists of offerHandles.
 
 ```js
@@ -143,6 +188,12 @@ The possible records are:
 
 ## Installation Record
 ```js
+/**
+ * @typedef {Object} Installation
+ * @property {() => SourceBundle} getBundle
+ */
+```
+```js
 {
   installationHandle, // opaque identifier, used as the table key
   bundle, // contains source code (accesible via bundle.source) and other info. 
@@ -150,7 +201,13 @@ The possible records are:
 ```
 
 ## Instance Record
-
+```js
+@typedef {Object} InvitationDetails
+ * @property {Installation} installation
+ * @property {Instance} instance
+ * @property {InvitationHandle} handle
+ * @property {string} description
+```
 ```js
 { 
   instanceHandle, // opaque identifier for the instance, used as the table key
