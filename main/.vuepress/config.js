@@ -130,12 +130,10 @@ module.exports = {
           sideBarDepth: 3,
           children: [
             '/ertp/guide/',
-            '/ertp/guide/issuer',
-            '/ertp/guide/brand',
             '/ertp/guide/amounts',
-            '/ertp/guide/amount-math',
-            '/ertp/guide/math-helpers',
-            '/ertp/guide/other-concepts'
+            '/ertp/guide/amount-maths',
+            '/ertp/guide/issuers-and-mints',
+            '/ertp/guide/purses-and-payments',
           ]
         },
         {
