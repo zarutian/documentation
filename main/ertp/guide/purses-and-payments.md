@@ -6,11 +6,11 @@ Digital assets can be any of:
 - Other kinds of rights, such as the right to participate in a particular contract.
 
 In ERTP, digital assets exist in either a `purse` or a `payment`:
-- **[`purse`]**: Holds
+- **`purse`**: Holds
   an amount of same-branded digital assets until part or
   all of them are withdrawn into a `payment`. A new `purse` is created
   by an `issuer` and can only hold assets of that `issuer`'s `brand`. 
-- **[`payment`]**:
+- **`payment`**:
   Holds a quantity of same-branded digital assets to transfer to another party. 
   A new `payment` is created either with new assets by a `mint` or by 
   withdrawing assets from a `purse`. It can only hold assets of the same `brand` as
