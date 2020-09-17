@@ -39,6 +39,8 @@ that works on the same `brand` as the one associated with the `issuer` argument.
 ```js
 const quatloosLocalAmountMath = await makeLocalAmountMath(quatloosIssuer);
 ````
+
+## AmountMath methods
 The following is a brief description and example of each `amountMath` method. For
 more detail, click the method's name to go to its entry in the [ERTP
 API Reference](../api/#ertp-api).
