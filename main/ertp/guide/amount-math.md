@@ -22,7 +22,7 @@ created. The kinds are:
 `mint`, `brand`, and `amountMath`. 
 The second, optional, argument specifies which kind
 of `amountMath` is used for the `brand` in a one-to-one
-association with the new `issuer`. It defaults to `nat`. 
+association with the new `issuer`. It defaults to `MathKind.NAT`. 
 
 For example: 
 ```js
@@ -58,7 +58,7 @@ API Reference](../api/#ertp-api).
       // returns 123 
       const value = quatloosAmountMath.getValue(quatloos123); 
       ```
-  - [`amountMath.getAmountMathKind()`](../api/amount-math.html#amountmath-getmathhelpersname)
+  - [`amountMath.getAmountMathKind()`](../api/amount-math.html#amountmath-getamountmathkind)
     - Returns a string of either `'nat'`, `'str'`, or `'strSet'`,
        indicating the kind of values this
        `amountMath` operates on.
@@ -70,8 +70,9 @@ API Reference](../api/#ertp-api).
   - [`amountMath.getEmpty()`](../api/amount-math.html#amountmath-getempty)
     - Returns an `amount` representing an empty `amount` (which is the identity
        element for the `amountMath` `add()` and `subtract()`
-       operations. Note that this value varies depending on the
-       `brand` and whether its `amountMath` is of kind `nat`, `str`, or `strSet`..
+       operations). This value varies depending on the
+       `brand` and its `amountMath` kind (`MathKind.NAT`, `MathKind.STR`, or
+       `MathKind.STRING_SET`).
     - ```js
       const { amountMath: quatloosAmountMath } = makeIssuerKit('quatloos');
       // Returns an empty amount for this issuer.
@@ -157,7 +158,7 @@ API Reference](../api/#ertp-api).
 - **Amount Creation Methods**
   - [`amountMath.make(allegedValue)`](../api/amount-math.html#amountmath-make-allegedvalue)	
     - Takes a `value` argument and returns an `amount` by making a record
-      with the `brand` and the `value`.
+      with the `value` and the `brand` associated with the `amountMath`.`.
     - ```js
       const { amountMath: quatloosAmountMath } = makeIssuerKit('quatloos');
       /// An `amount` with `value` = 837 and `brand` = Quatloos
@@ -183,8 +184,13 @@ These methods either use or return `amountMath` objects:
   - Creates a new `amountMath` that uses the `amountMath` kind
     designated by the `amountMathKind` argument (`MathKind.NAT`, `MathKind.STR`,
     `MathKind.STRING_SET`). Also creates a new `mint`, `issuer`, and `brand`.
+  - ```js
+    const (issuer, mint, brand, amountMath) = makeIssuerKit(quatloos)`
 - [`issuer.getAmountMathKind()`](../api/issuer.html#issuer-getmathhelpersname)
-  - Returns the kind of `amountMath` (`nat`, `str`, or `strSet`).	
+  - Returns the kind of `amountMath` (`MathKind.NAT`, `MathKind.STR`, or `MathKind.STRING_SET`).
+  - ```js
+    const myAmountMathKind = quatloosIssuer.getAmountMathKind();
+    ```
 - [`zcf.getAmountMath(brand)`](../../zoe/api/zoe-contract-facet.html#zcf-getamountmath-brand)
   - Returns the `amountMath` object associated with the `brand` argument.
   - ```js
